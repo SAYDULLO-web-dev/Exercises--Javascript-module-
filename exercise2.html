@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>The Last Word Length</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 500px;
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .card-body {
+            padding: 2rem;
+        }
+
+        #last-word-length-result {
+            margin-top: 1rem;
+            font-weight: bold;
+            color: #007bff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <div class="card-body">
+            <h1 class="card-title text-center mb-4">Last Word Length</h1>
+            <form id="last-word-length">
+                <div class="form-group">
+                    <label for="sentence">Enter a sentence:</label>
+                    <input type="text" id="sentence" name="sentence" class="form-control"
+                        placeholder="Type your sentence here" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Submit</button>
+            </form>
+            <div id="last-word-length-result" class="text-center"></div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('last-word-length').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const sentence = document.getElementById('sentence').value.trim();
+            const words = sentence.split(/\s+/); // Split by spaces, handling multiple spaces
+            const lastWord = words[words.length - 1];
+            const lastWordLength = lastWord ? lastWord.length : 0;
+            document.getElementById('last-word-length-result').textContent = `The last word in the sentence has ${lastWordLength} characters.`;
+        });
+    </script>
+</body>
+
+</html>
