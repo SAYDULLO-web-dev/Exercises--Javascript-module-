@@ -5,9 +5,6 @@ Misol:
 
 har bir . urnini [.] bosadi -->
 
-<!-- NOTE: I used to protect IP addresses changing last 16 bit of the IP address to mark "*" (i.e. the 1.1.*.* address) and
-saving localStorage. This will be replaced with the new IP address later on. -->
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -81,9 +78,18 @@ saving localStorage. This will be replaced with the new IP address later on. -->
             return ipRegex.test(ipAddress);
         }
 
+
+        //This function is changing last 16 bit of the IP address to mark "*" (i.e. the 1.1.*.* address) 
+        // function maskIpAddress(ipAddress) {
+        //     return ipAddress.split('.').map((segment, index) => (index > 1 ? '*' : segment)).join('.');
+        // }
+
+
+        //This function is changing dot (.) to mark "[.]" (i.e. the 1[.]1[.]1[.]1 address) using regex
         function maskIpAddress(ipAddress) {
-            return ipAddress.split('.').map((segment, index) => (index > 1 ? '*' : segment)).join('.');
+            return ipAddress.split('.').join('[.]');
         }
+
 
         function showAlert(message, type) {
             const alertContainer = document.getElementById('alert-container');
